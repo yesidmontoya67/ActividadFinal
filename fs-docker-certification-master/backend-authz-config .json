@@ -1,0 +1,185 @@
+{
+  "allowRemoteResourceManagement": true,
+  "policyEnforcementMode": "ENFORCING",
+  "resources": [
+    {
+      "name": "Order Resource",
+      "ownerManagedAccess": false,
+      "displayName": "order",
+      "attributes": {},
+      "_id": "27f8e423-2512-439b-97fb-c402ce8d0580",
+      "uris": [
+        "/api/v1/*"
+      ],
+      "scopes": [
+        {
+          "name": "view"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "create"
+        }
+      ]
+    }
+  ],
+  "policies": [
+    {
+      "id": "4ff7d833-ce1e-43ab-af19-b8055733de59",
+      "name": "only admin policy",
+      "description": "Apllicable  for all admins",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"ADMIN\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "dc0b8274-0f79-4248-87f5-cd3dbb0a0a36",
+      "name": "only employee policy",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"EMPLOYEE\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "a9d2688f-0ed3-472b-a40c-43d9541835e5",
+      "name": "only client policy",
+      "type": "role",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "roles": "[{\"id\":\"CLIENT\",\"required\":false}]"
+      }
+    },
+    {
+      "id": "6db549d4-2749-4452-b7f9-f065bb15d331",
+      "name": "Order View Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"Order Resource\"]",
+        "scopes": "[\"view\"]",
+        "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "2d79db92-3aef-4258-beb3-e8d48973f9e6",
+      "name": "Order Create Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"Order Resource\"]",
+        "scopes": "[\"create\"]",
+        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "852569f5-4cc7-4b47-9755-1342e19708be",
+      "name": "Order  Resource Permision",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"Order Resource\"]",
+        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "9924e9da-fd44-4880-aab5-c2c032b4c9b2",
+      "name": "Order Update Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"update\"]",
+        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "07d41d78-eff8-43fb-89c3-a2681a52a609",
+      "name": "Order Delete Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"delete\"]",
+        "applyPolicies": "[\"only admin policy\"]"
+      }
+    },
+    {
+      "id": "365e1d44-e5f0-4947-8f0c-873e6b3925e2",
+      "name": "Product View Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"view\"]",
+        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "9315d560-d8cf-47a1-9823-eeddd5f7e909",
+      "name": "Product Create  Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"create\"]",
+        "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "6d8154f5-69f9-4ddb-a8c4-753fca176380",
+      "name": "Product Update Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"update\"]",
+        "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "3c146e90-ac05-461e-aa53-135db86078b5",
+      "name": "Product Delete Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "scopes": "[\"delete\"]",
+        "applyPolicies": "[\"only admin policy\"]"
+      }
+    }
+  ],
+  "scopes": [
+    {
+      "id": "aad73f5c-de16-4e5f-825d-c24273d26d9c",
+      "name": "delete"
+    },
+    {
+      "id": "62960392-5629-454a-9f7a-cb501447d09e",
+      "name": "view",
+      "displayName": "view"
+    },
+    {
+      "id": "21447c5d-ff95-46a6-9c58-badabd988774",
+      "name": "create",
+      "displayName": "create"
+    },
+    {
+      "id": "3c136bc4-ed02-4a6e-a36e-7eae8f611662",
+      "name": "update"
+    }
+  ],
+  "decisionStrategy": "UNANIMOUS"
+}
