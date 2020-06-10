@@ -88,7 +88,7 @@
       "name": "Order  Resource Permision",
       "type": "resource",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "resources": "[\"Order Resource\"]",
         "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
@@ -99,7 +99,7 @@
       "name": "Order Update Permision",
       "type": "scope",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "scopes": "[\"update\"]",
         "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
@@ -110,7 +110,7 @@
       "name": "Order Delete Permision",
       "type": "scope",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "scopes": "[\"delete\"]",
         "applyPolicies": "[\"only admin policy\"]"
@@ -121,7 +121,7 @@
       "name": "Product View Permision",
       "type": "scope",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "scopes": "[\"view\"]",
         "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
@@ -132,7 +132,7 @@
       "name": "Product Create  Permision",
       "type": "scope",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "scopes": "[\"create\"]",
         "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
@@ -143,7 +143,7 @@
       "name": "Product Update Permision",
       "type": "scope",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "scopes": "[\"update\"]",
         "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
@@ -154,7 +154,7 @@
       "name": "Product Delete Permision",
       "type": "scope",
       "logic": "POSITIVE",
-      "decisionStrategy": "UNANIMOUS",
+      "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "scopes": "[\"delete\"]",
         "applyPolicies": "[\"only admin policy\"]"
@@ -172,13 +172,13 @@
       "displayName": "view"
     },
     {
+      "id": "3c136bc4-ed02-4a6e-a36e-7eae8f611662",
+      "name": "update"
+    },
+    {
       "id": "21447c5d-ff95-46a6-9c58-badabd988774",
       "name": "create",
       "displayName": "create"
-    },
-    {
-      "id": "3c136bc4-ed02-4a6e-a36e-7eae8f611662",
-      "name": "update"
     }
   ],
   "decisionStrategy": "UNANIMOUS"
