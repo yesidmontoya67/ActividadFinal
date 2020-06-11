@@ -39,9 +39,9 @@ const UpdateProduct = props => {
     const {products}= useProducts(props.id); 
 
     function checked (e) {        
-        if (e == "BORRADOR"){
+        if (e === "BORRADOR"){
             return false; }
-        else if (e == "PUBLICADO") {
+        else if (e === "PUBLICADO") {
             return true;   }              
     }       
     

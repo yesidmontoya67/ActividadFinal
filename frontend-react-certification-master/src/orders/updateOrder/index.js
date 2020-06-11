@@ -18,7 +18,7 @@ function getOrder(id){
             "content-type": "application/json;charset=UTF-8",
             "Authorization" : "Bearer "+localStorage.getItem('token'),          
         }
-  }).then(response => response.json());
+  }).then(response =>  response.json());
   }
 
   
@@ -36,14 +36,12 @@ function getOrder(id){
 
 const UpdateOrder = props => {
     const [order,setOrders]= useState(null);     
-    const {orders}= useOrders(props.id); 
+    const {orders}= useOrders(props.id);      
 
-    
-
-    function checked (e) {        
-        if (e == "REGISTRADA"){
+      function checked (e) {        
+        if (e === "REGISTRADA"){
             return false; }
-        else if (e == "PAGADA") {
+        else if (e === "PAGADA") {
             return true;   }   
         else {
             return undefined
@@ -52,13 +50,19 @@ const UpdateOrder = props => {
     }  
     
     function checked2 (e) {        
-        if (e == "ENTREGADA"){
+        if (e === "ENTREGADA"){
             return true; }
         else {
             return false;   }   
                  
-    }  
-    
+    }    
+
+    const [selectedValue, setSelectedValue] = useState(orders.status);
+
+    const handleChange = (event) => { 
+        orders.status= event.target.value;     
+        setSelectedValue(event.target.value);
+      }; 
       
     const handleSubmit=event=>{
         event.preventDefault();
@@ -105,19 +109,19 @@ const UpdateOrder = props => {
           <label>Order Status</label>
           <div className="form-check">
             <div className="form-check" >
-            <input className="form-check-input" type="radio" name="status" id="registrada" value="REGISTRADA" defaultChecked= {!checked(orders.status)}/>
+            <input className="form-check-input" type="radio" name="status" id="registrada" value="REGISTRADA" onChange={handleChange} defaultChecked= {!checked(orders.status)}/>
             <label className="form-check-label" >
             REGISTRADA
             </label>
             </div>
             <div className="form-check">
-            <input className="form-check-input" type="radio" name="status" id="pagada" value="PAGADA" defaultChecked= {checked(orders.status)} />
+            <input className="form-check-input" type="radio" name="status" id="pagada" value="PAGADA" onChange={handleChange} defaultChecked= {checked(orders.status)} />
             <label className="form-check-label" >
             PAGADA
             </label>
             </div>
             <div className="form-check">
-            <input className="form-check-input" type="radio" name="status" id="entregada" value="ENTREGADA" defaultChecked= {checked2(orders.status)} />
+            <input className="form-check-input" type="radio" name="status" id="entregada" value="ENTREGADA"  onChange={handleChange} checked= {checked2(orders.status)} />
             <label className="form-check-label" >
             ENTREGADA
             </label>

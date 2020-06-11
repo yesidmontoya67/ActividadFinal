@@ -32,7 +32,7 @@ function ordersInfo(){
         method:"GET",                   
         headers:{
             "content-type": "application/json;charset=UTF-8",
-            "Accept" : "application/json", 
+            "Accept" : "*/*", 
             "Authorization" : "Bearer "+localStorage.getItem('token'),
         }
 }).then(response => response.json());
