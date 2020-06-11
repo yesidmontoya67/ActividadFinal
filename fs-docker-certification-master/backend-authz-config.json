@@ -9,20 +9,44 @@
       "attributes": {},
       "_id": "27f8e423-2512-439b-97fb-c402ce8d0580",
       "uris": [
-        "/api/v1/*"
+        "/api/v1/orders/*"
       ],
       "scopes": [
         {
-          "name": "view"
+          "name": "createOrder"
         },
         {
-          "name": "update"
+          "name": "viewOrder"
         },
         {
-          "name": "delete"
+          "name": "updateOrder"
         },
         {
-          "name": "create"
+          "name": "deleteOrder"
+        }
+      ]
+    },
+    {
+      "name": "Product Resource",
+      "ownerManagedAccess": false,
+      "displayName": "product",
+      "attributes": {},
+      "_id": "1445e3fb-bd71-424b-9595-53aa94e0c7b8",
+      "uris": [
+        "/api/v1/products/*"
+      ],
+      "scopes": [
+        {
+          "name": "viewProduct"
+        },
+        {
+          "name": "createProduct"
+        },
+        {
+          "name": "updateProduct"
+        },
+        {
+          "name": "deleteProduct"
         }
       ]
     }
@@ -60,27 +84,27 @@
       }
     },
     {
-      "id": "6db549d4-2749-4452-b7f9-f065bb15d331",
+      "id": "c859db5d-d357-4011-a907-5d46a93eb392",
+      "name": "Order Create  Permision",
+      "type": "scope",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"Order Resource\"]",
+        "scopes": "[\"createOrder\"]",
+        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
+      }
+    },
+    {
+      "id": "6b705db2-1e9f-44b7-b51d-4657e286b3d3",
       "name": "Order View Permision",
       "type": "scope",
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
         "resources": "[\"Order Resource\"]",
-        "scopes": "[\"view\"]",
+        "scopes": "[\"viewOrder\"]",
         "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
-      }
-    },
-    {
-      "id": "2d79db92-3aef-4258-beb3-e8d48973f9e6",
-      "name": "Order Create Permision",
-      "type": "scope",
-      "logic": "POSITIVE",
-      "decisionStrategy": "AFFIRMATIVE",
-      "config": {
-        "resources": "[\"Order Resource\"]",
-        "scopes": "[\"create\"]",
-        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
       }
     },
     {
@@ -101,7 +125,8 @@
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
-        "scopes": "[\"update\"]",
+        "resources": "[\"Order Resource\"]",
+        "scopes": "[\"updateOrder\"]",
         "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
       }
     },
@@ -112,7 +137,8 @@
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
-        "scopes": "[\"delete\"]",
+        "resources": "[\"Order Resource\"]",
+        "scopes": "[\"deleteOrder\"]",
         "applyPolicies": "[\"only admin policy\"]"
       }
     },
@@ -123,7 +149,8 @@
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
-        "scopes": "[\"view\"]",
+        "resources": "[\"Product Resource\"]",
+        "scopes": "[\"viewProduct\"]",
         "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
       }
     },
@@ -134,7 +161,8 @@
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
-        "scopes": "[\"create\"]",
+        "resources": "[\"Product Resource\"]",
+        "scopes": "[\"createProduct\"]",
         "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
       }
     },
@@ -145,7 +173,8 @@
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
-        "scopes": "[\"update\"]",
+        "resources": "[\"Product Resource\"]",
+        "scopes": "[\"updateProduct\"]",
         "applyPolicies": "[\"only admin policy\",\"only employee policy\"]"
       }
     },
@@ -156,29 +185,58 @@
       "logic": "POSITIVE",
       "decisionStrategy": "AFFIRMATIVE",
       "config": {
-        "scopes": "[\"delete\"]",
+        "resources": "[\"Product Resource\"]",
+        "scopes": "[\"deleteProduct\"]",
         "applyPolicies": "[\"only admin policy\"]"
+      }
+    },
+    {
+      "id": "604bd5a5-2cab-43eb-8ac5-0c3fa548bc58",
+      "name": "Product Resource Permision",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"Product Resource\"]",
+        "applyPolicies": "[\"only client policy\",\"only admin policy\",\"only employee policy\"]"
       }
     }
   ],
   "scopes": [
     {
-      "id": "aad73f5c-de16-4e5f-825d-c24273d26d9c",
-      "name": "delete"
+      "id": "21447c5d-ff95-46a6-9c58-badabd988774",
+      "name": "createProduct",
+      "displayName": "create"
     },
     {
-      "id": "62960392-5629-454a-9f7a-cb501447d09e",
-      "name": "view",
-      "displayName": "view"
+      "id": "aad73f5c-de16-4e5f-825d-c24273d26d9c",
+      "name": "deleteProduct"
     },
     {
       "id": "3c136bc4-ed02-4a6e-a36e-7eae8f611662",
-      "name": "update"
+      "name": "updateProduct"
     },
     {
-      "id": "21447c5d-ff95-46a6-9c58-badabd988774",
-      "name": "create",
-      "displayName": "create"
+      "id": "62960392-5629-454a-9f7a-cb501447d09e",
+      "name": "viewProduct",
+      "displayName": "view"
+    },
+    {
+      "id": "a042c3e2-7b4f-4bcc-9273-ce9a0c6260b9",
+      "name": "viewOrder"
+    },
+    {
+      "id": "554bd886-f2a5-492f-b59b-f3e348dad426",
+      "name": "deleteOrder"
+    },
+    {
+      "id": "69f0f6c8-1b95-4457-9ad4-74191bb21964",
+      "name": "updateOrder"
+    },
+    {
+      "id": "603f3491-8fdd-4e79-98fd-8d4ddb6bf44b",
+      "name": "createOrder",
+      "displayName": "create order"
     }
   ],
   "decisionStrategy": "UNANIMOUS"
